@@ -9,10 +9,164 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="/css/style.css">
+    
     <script src="https://kit.fontawesome.com/cf67172275.js" crossorigin="anonymous"></script>
-    <style>
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;700;900&display=swap');
 
+    body {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 18px;
+        color: #585858;
+    }
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+    }
+    @media(max-width:1024px) {
+        .container {
+            max-width: 100%;
+        }
+        header .container {
+            max-width: 90%;
+        }
+    }
+    header {
+        border-bottom: 1px solid rgb(243, 243, 243);
+    }
+    header .container{
+        display: flex;
+        justify-content:space-between;
+        padding: 15px 0;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    p {
+         margin: 0.5rem;
+    }
+    .logo {
+        text-transform: uppercase;
+        color: #000;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 2rem;
+    }
+    .bag {
+        font-size: 28px;
+        position: relative;
+    }
+    .bag span {
+        display: block;
+        background: #E20000;
+        color: #fff;
+        width: 1.3rem;
+        height: 1.3rem;
+        text-align: center;
+        border-radius: 100%;
+        line-height: 1.3rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+        position: absolute;
+        right: -12px;
+        top: 19px;
+    }
+    @media(min-width:800px) {
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            padding: 3rem 0 0 0;
+        }
+        .card {
+            width: 34%;
+        }
+    }
+
+    .card {
+        border: solid #ccc 1px;
+        border-radius: 20px;
+        overflow: hidden;
+        line-height: 1.5rem;
+        padding-bottom: 20px;
+        margin: 0 10px;
+    }
+    .card img {
+        width: 100%;
+    }
+    .card .title {
+        font-weight: 900;
+        font-size: 26px;
+    }
+    .card .price {
+        font-size:4rem;
+        font-weight: 100;
+        text-align: right;
+        line-height: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+    .button {
+        border-radius: 50px;
+        display: block;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        height: 3rem;
+        width: 90%;
+        line-height: 3rem;
+        margin: auto;
+        transition: all .3s ease;
+    }
+    .button:hover {
+        background: #2c2c2c;
+    }
+    .cart {
+        width: 30%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background: #fff;
+        box-shadow: 0px 0px 5px #d4d4d4;
+        font-size: 16px;
+        transition: all .5s ease;
+    }
+    .activo {
+        right: 0;
+    }
+    .cart #minicart {
+        padding: 1.3rem;
+    }
+    .cart #minicart .button {
+        margin-top: 2rem;
+    }
+    .cart table {
+        border-collapse: collapse;
+    }
+    .cart th, .cart td {
+        padding: 10px;
+        text-align: left;
+    }
+    .closecart {
+        font-size: 2rem;
+        position: absolute;
+        right: 10px;
+    }
+    .deletebtn {
+        display: block;
+        background: #E20000;
+        color: #fff;
+        width: 1.5rem;
+        height: 1.5rem;
+        text-align: center;
+        border-radius: 100%;
+        line-height: 1.5rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
     </style>
 
     <title>Bantu.an - Berbagi dengan Barang Bekas</title>
@@ -53,7 +207,7 @@
                 <div class="col-lg-7 mx-auto text-center">
                     <h1 class="display-4 text-white">Bantu.an</h1>
                     <p class="text-white my-3">Anda punya barang bekas layak? Ingin mendonasikannya? <b>Bantu.an</b> aja</p>
-                    <a href="#" class="btn me-2 btn-primary" style="border-radius:100px;background-color:#0464cc">Donasi Sekarang</a>
+                    <a href="/adddonation" class="btn me-2 btn-primary" style="border-radius:100px;background-color:#0464cc">Donasi Sekarang</a>
                 </div>
             </div>
         </div>
@@ -155,10 +309,10 @@
                     <p>Beberapa barang yang kami terima sebagai barang donasi adalah</p>
                 </div>
             </div>
-            <div class="row g-3">
+            <div class="row g-3" style="margin-bottom:40px">
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="/img/pro1.jpg" alt="">
+                        <img src="/img/pro1.jpg" alt="" style="height:270px">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">Pakaian Bekas</h4>
@@ -169,7 +323,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="/img/pro2.jpg" alt="">
+                        <img src="/img/pro2.jpg" alt="" style="height:270px">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">Perangkat Elektronik</h4>
@@ -180,7 +334,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="/img/pro3.jpg" alt="">
+                        <img src="/img/pro3.jpg" alt="" style="height:270px">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">Perabotan</h4>
@@ -199,6 +353,8 @@
                     <div class="col-lg-4">
                         <img src="\assets\1.png" class="logo-gambar">
                         <p>Organisasi Bantu.an</p>
+                    </div>
+                    <div class="col-lg-4">
                     </div>
                     <div class="col-lg-4">
                         <h5 class="text-white">Contact</h5>

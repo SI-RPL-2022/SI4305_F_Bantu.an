@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Barang_Donasi;
 
 class HomeController extends Controller
 {
@@ -52,6 +55,15 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('home');
+        $data = DB::table('barang_donasi')->join("users","barang_donasi.donatur","=","users.id")->select("users.name", "barang_donasi.nama_barang", "barang_donasi.jenis_barang", "barang_donasi.metode_pengiriman","barang_donasi.tanggal_donasi","barang_donasi.deskripsi","barang_donasi.status_cek","barang_donasi.ketersediaan","barang_donasi.gambar")->where('barang_donasi.ketersediaan',1)->get();
+        return view('indexlogin',compact("data"));
+    }
+
+    public function adddonation(){
+        return view('adddonation');
+    }
+
+    public function postdonation(Request $request){
+
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VerificatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ All Normal Users Routes List
 Route::middleware(['auth', 'user-access:0'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::get('/adddonation', [HomeController::class, 'adddonation'])->name('adddonation');
 });
 
 /*------------------------------------------
@@ -43,8 +45,8 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->group(function () {
-    Route::get('/index',[HomeController::class,'index'])->name('index');
     Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 });
 
 /*------------------------------------------
@@ -53,6 +55,9 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:2'])->group(function () {
-    Route::get('/index',[HomeController::class,'index'])->name('index');
-    Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
+    Route::get('/verificator/home', [VerificatorController::class, 'index'])->name('verificator.home');
+    Route::get('/verificator/profile', [VerificatorController::class, 'profile'])->name('verificator.profile');
+    Route::get('/verificator/verifyonline', [VerificatorController::class, 'verifyonline'])->name('verificator.verifyonline');
+    Route::get('/verificator/verifyonsite', [VerificatorController::class, 'verifyonsite'])->name('verificator.verifyonsite');
+    Route::get('/verificator/showverif/{id}', [VerificatorController::class, 'showverif'])->name('verificator.showverif');
 });
