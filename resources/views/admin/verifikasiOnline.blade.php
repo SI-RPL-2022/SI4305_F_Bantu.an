@@ -320,10 +320,10 @@
                   <table class="table" style="margin-top:20px">
                     <thead>
                       <tr>
-                        <th>Project</th>
-                        <th>Client</th>
+                        <th>Donasi</th>
+                        <th>Donatur</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">

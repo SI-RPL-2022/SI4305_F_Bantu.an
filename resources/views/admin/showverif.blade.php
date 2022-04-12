@@ -344,6 +344,7 @@
                         </div>
                       <?php
                       $cek = $d->status_cek;
+                      $barang = $d->id;
                       } ?>
                     </div>
                   </div>
@@ -377,7 +378,15 @@
                   <small class="text-muted float-end">Silahkan isi dengan sebaik mungkin</small>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form method="post" action="/verificator/verifikasi">
+                    @csrf
+                  <?php if($cek == 0){?>
+                    <input type="hidden" class="form-control" id="basic-default-name" name="pengecekan" value="1" />
+                  <?php }else{ ?>
+                    <input type="hidden" class="form-control" id="basic-default-name" name="pengecekan" value="2" />
+                  <?php } ?>
+                  <input type="hidden" class="form-control" id="basic-default-name" name="barang" value="<?php echo $barang?>" />
+                  <input type="hidden" class="form-control" id="basic-default-name" name="jenis_cek" value="1" />
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Penguji</label>
                       <div class="col-sm-10">
@@ -387,24 +396,26 @@
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-name">Status Pengujian</label>
                       <div class="col-sm-10">
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="status">
                         <option selected disabled>Status Pengujian</option>
-                        <option value="1">Diterima untuk Donasi Langsung</option>
-                        <option value="2">Diterima untuk Dijual Dahulu</option>
+                        <option value="2">Diterima untuk Donasi Langsung</option>
+                        <option value="1">Diterima untuk Dijual Dahulu</option>
                       </select>
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-message">Deskripsi</label>
+                      <label class="col-sm-2 col-form-label" for="basic-default-message">Catatan</label>
                       <div class="col-sm-10">
                         <textarea
                           id="basic-default-message"
                           class="form-control"
-                          placeholder="Hi, Do you have a moment to talk Joe?"
+                          placeholder="Deskripsi"
                           aria-label="Hi, Do you have a moment to talk Joe?"
                           aria-describedby="basic-icon-default-message2"
                           style="resize:none"
-                        ></textarea>
+                          name="deskripsi"
+                        >
+                        </textarea>
                       </div>
                     </div>
                     <div class="row justify-content-end">
