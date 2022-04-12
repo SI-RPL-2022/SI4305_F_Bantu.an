@@ -37,6 +37,9 @@ Route::middleware(['auth', 'user-access:0'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     Route::get('/adddonation', [HomeController::class, 'adddonation'])->name('adddonation');
+    Route::post('/postdonation', [HomeController::class, 'postdonation'])->name('postdonation');
+    Route::get('/donasiku', [HomeController::class, 'donasiku'])->name('donasiku');
+    Route::get('/katalog', [HomeController::class, 'katalog'])->name('katalog');
 });
 
 /*------------------------------------------
@@ -60,4 +63,5 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/verificator/verifyonline', [VerificatorController::class, 'verifyonline'])->name('verificator.verifyonline');
     Route::get('/verificator/verifyonsite', [VerificatorController::class, 'verifyonsite'])->name('verificator.verifyonsite');
     Route::get('/verificator/showverif/{id}', [VerificatorController::class, 'showverif'])->name('verificator.showverif');
+    Route::post('/verificator/verifikasi', [VerificatorController::class, 'verifikasi'])->name('verificator.verifikasi');
 });
