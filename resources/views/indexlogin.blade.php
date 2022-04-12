@@ -40,7 +40,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <li><a class="dropdown-item" href="/profil">Profil</a></li>
-                              <li><a class="dropdown-item" href="/profil">DonasiKu</a></li>
+                              <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
@@ -68,7 +68,6 @@
     </div><!-- //HERO -->
 
     <!-- SERVICES -->
-<<<<<<< HEAD
     <section class="container">
             <center><h1>Katalog Barang Donasi</h1></center>
   <div class="card-group" style="margin-top:20px">
@@ -81,13 +80,13 @@
         </div>
         <div class="card-footer">
           <center>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="padding:5px">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $d->id }}" style="padding:5px">
               Selengkapnya
             </button>
           </center>
         </div>
       </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal{{ $d->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -100,10 +99,10 @@
           <img style="height:400px;margin-bottom:3px" src="/assets/verifikasi/{{$d->gambar}}" alt="Card image cap">
           <h4>{{$d->nama_barang}}</h4>
           <p>{{$d->deskripsi}}</p>
+          <p>Dapatkan Langsung di kantor bantu.an</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
