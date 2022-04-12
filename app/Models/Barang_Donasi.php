@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang_Donasi extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $table = "karyawans";
+  protected $fillable = ['id', 'nama_karyawan', 'jenis_kelamin', 'tanggal_lahir', 'alamat', 'id_akun'];
 }
