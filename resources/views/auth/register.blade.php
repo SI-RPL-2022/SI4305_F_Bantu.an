@@ -76,7 +76,7 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
-                    <img src="\assets\1.png" style="width:200px;height:40px">
+                    <img src="/assets/1.png" style="width:200px;height:40px">
                 </a>
               </div>
               <!-- /Logo -->
