@@ -86,7 +86,7 @@
               <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">{{ __('Email Address') }}</label>
+                  <label for="email" class="form-label">Email</label>
                   <input
                     type="text"
                     class="form-control"
@@ -95,15 +95,10 @@
                     placeholder="Enter your email or username"
                     autofocus
                   />
-                  @error('email')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">{{ __('Password') }}</label>
+                    <label class="form-label" for="password">Password</label>
                     <a href="{{ route('password.request') }}">
                       <small>Lupa Password?</small>
                     </a>
@@ -120,11 +115,6 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
 
                 </div>
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
                   </div>
                 </div>
                 <div class="mb-3" style="padding-left:25px">
