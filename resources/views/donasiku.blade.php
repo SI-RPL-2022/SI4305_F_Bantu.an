@@ -29,7 +29,7 @@
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
 <a class='fixed-whatsapp' href='https://api.whatsapp.com/send?phone=628xxxxxxxxxx' rel='nofollow noopener' target='_blank' title='Whatsapp' />
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white" style="margin-bottom:30px">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="\assets\1.png" class="logo-gambar">
@@ -53,6 +53,8 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <li><a class="dropdown-item" href="/profil">Profil</a></li>
                               <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
+                              <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
+                              <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
@@ -65,7 +67,7 @@
                 </ul>
             </div>
         </div>
-    </nav><!-- //NAVBAR -->
+    </nav>
     <!-- HERO -->
     <section class="container">
       <div class="row">
