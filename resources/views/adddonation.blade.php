@@ -356,6 +356,7 @@
                                     <li><a class="dropdown-item" href="/profil">Profil</a></li>
                                     <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                                     <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
+                                    <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -368,7 +369,7 @@
                       </ul>
                   </div>
               </div>
-          </nav><!-- //NAVBAR -->
+          </nav>
         <div class="main-content">
           <div class="container mt-7">
             <!-- Table -->
@@ -384,6 +385,7 @@
                   </div>
                   <div class="card-body" style="background-color:white">
                     <form method="post" action="/postdonation" enctype="multipart/form-data">
+                      @csrf
                       <h6 class="heading-small text-muted mb-4">Silahkan isi data sumbangan dengan sebaik mungkin</h6>
                       <div class="pl-lg-4">
                         <div class="row">
@@ -498,6 +500,7 @@
                 </div>
             </div>
         </footer>
+        <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

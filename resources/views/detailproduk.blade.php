@@ -55,6 +55,7 @@
                                           <li><a class="dropdown-item" href="/profil">Profil</a></li>
                                           <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                                           <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
+                                          <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>
                                           <li><hr class="dropdown-divider"></li>
                                           <li><a class="dropdown-item" href="{{ route('logout') }}"
                                              onclick="event.preventDefault();

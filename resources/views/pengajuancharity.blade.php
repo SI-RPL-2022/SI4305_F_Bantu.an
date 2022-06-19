@@ -378,30 +378,51 @@
                   <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
                       <div class="col-8">
-                        <h3 class="mb-0">Pengajuan Pengambilan Barang</h3>
+                        <h3 class="mb-0">Pengajuan Program Charity</h3>
                       </div>
                     </div>
                   </div>
                   <div class="card-body" style="background-color:white">
-                    <form method="post" action="/postpengajuan">
+                    <form method="post" action="/postcharity">
                       @csrf
-                      <h6 class="heading-small text-muted mb-4">Silahkan isi data sumbangan dengan sebaik mungkin</h6>
                       <div class="pl-lg-4">
                         <div class="row">
                           <div class="col-lg-12">
-                            <?php foreach($data as $dt){ ?>
                             <div class="form-group focused">
-                              <input type="hidden" name="barang" value="{{ $dt->id }}">
-                              <b><label class="form-control-label" for="input-username">Nama Barang</label></b><br>
-                              <label class="form-control-label" for="input-username">{{ $dt->nama_barang }}</label>
+                              <label class="form-control-label" for="input-username">Nama Donasi</label>
+                              <input type="text" id="input-username" class="form-control" placeholder="Nama Barang" name="nama">
                             </div>
-                            <div class="form-group focused">
-                              <b><label class="form-control-label" for="input-username">Harga</label></b><br>
-                              <label class="form-control-label" for="input-username">{{ $dt->harga }}</label>
-                            </div>
-                          <?php } ?>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="form-group focused">
+                              <label class="form-control-label" for="input-first-name">Jenis Barang yang Diterima</label><br>
+                              <select id="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r" class="form-select" name="jenis">
+                                <option disabled selected value="" class="form-select-placeholder">Pilih Jenis Barang</option>
+                                <option value="Barang ELektronik">Barang Elektronik</option>
+                                <option value="Pakaian">Pakaian</option>
+                                <option value="Perabotan">Perabotan</option>
+                            </select>
+                            </div>
+                          </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group focused">
+                                <label class="form-control-label" for="input-city">Deskripsi Barang</label>
+                              <textarea id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" placeholder="" name="deskripsi" placeholder="Deskripsi Barang"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group focused">
+                                <label class="form-control-label" for="input-city">Proposal Pengajuan Charity</label>
+                              <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" type="file" name="gambar" required>
+                            </div>
+                          </div>
+                          </div>
                       </div>
                       <div class="pl-lg-4">
                         <div class="row">
@@ -419,18 +440,18 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-city">Alasan Pengajuan Pengambilan Barang</label>
+                              <label class="form-control-label" for="input-city">Deskripsi Barang</label>
                             <textarea id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" placeholder="" name="deskripsi" placeholder="Deskripsi Barang"></textarea>
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-3">
-                            <div class="form-group focused">
-                            <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="btn btn-primary" type="submit" value="Tambah Pengajuan">
-                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="form-group focused">
+                          <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="btn btn-primary" type="submit" value="Tambah Donasi">
                         </div>
-                        </div>
+                      </div>
                       </div>
                     </form>
                   </div>

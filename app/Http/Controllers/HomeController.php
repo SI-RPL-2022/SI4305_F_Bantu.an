@@ -129,6 +129,6 @@ class HomeController extends Controller
       'status'=> 0
     ]);
 
-    return redirect()->route('tambahpengajuan')->with(['success' => 'Berhasil Ditambah']);
+    return redirect()->route('katalog')->with(['success' => 'Berhasil Ditambah']);
   }
 }

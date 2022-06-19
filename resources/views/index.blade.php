@@ -5,11 +5,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+
     <script src="https://kit.fontawesome.com/cf67172275.js" crossorigin="anonymous"></script>
     <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;700;900&display=swap');
@@ -346,7 +346,7 @@
         </div>
     </section><!-- PROJECTS -->
 
-    <footer>
+    <footer style="color:white">
         <div class="footer-top">
             <div class="container">
                 <div class="row gy-4">

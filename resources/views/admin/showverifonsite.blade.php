@@ -66,6 +66,7 @@
   </head>
 
   <body>
+    <!-- Layout wrapper -->
     <?php
     if(auth()->user()->type == "1"){
       $a = "Admin";
@@ -73,7 +74,6 @@
       $a = "verificator";
     }
     ?>
-    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
@@ -260,13 +260,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <?php
-                            if(auth()->user()->type == "1"){
-                              $a = "Admin";
-                            }else if(auth()->user()->type == "2"){
-                              $a = "Verifikator ";
-                            }
-                            ?>
+
                             <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
                             <small class="text-muted">{{ $a }}</small>
                           </div>
@@ -325,46 +319,117 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">Verifikasi Online</h4>
+              <h4 class="fw-bold py-3 mb-4">Form Verifikasi</h4>
 
               <!-- Basic Bootstrap Table -->
               <div class="card">
-                <div class="table-responsive text-nowrap">
-                  <table class="table" style="margin-top:20px">
-                    <thead>
-                      <tr>
-                        <th>Donasi</th>
-                        <th>Donatur</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                      <?php foreach($data as $d){?>
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$d->nama_barang}}</strong></td>
-                        <td>{{$d->name}}</td>
-                        <td>
-                        <?php if($d->status_cek == 0){ ?>
-                        <span class="badge bg-label-danger me-1">Belum Divalidasi</span></td>
-                        <?php }else{ ?>
-                        <span class="badge bg-label-success me-1">Divalidasi</span></td>
-                        <?php } ?>
-                        <td>
-                          <div class="dropdown">
-                            <a href="/verificator/showverif/<?php echo $d->id ?>">
-                              Validasi Sekarang
-                            </a>
+                <div class="col-xxl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                      <h5 class="mb-0">Form</h5>
+                      <small class="text-muted float-end">Keterangan Barang</small>
+                    </div>
+                    <div class="card-body">
+                      <?php foreach ($data as $d) { ?>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Barang</label>
+                          <div class="col-sm-10">
+                            <p>{{$d->nama_barang}}</p>
                           </div>
-                        </td>
-                      </tr>
-                    <?php } ?>
-                    </tbody>
-                  </table>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-company">Donatur</label>
+                          <div class="col-sm-10">
+                            <p>{{$d->name}}</p>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-email">Tanggal Donasi</label>
+                          <div class="col-sm-10">
+                              <p>{{$d->tanggal_donasi}}</p>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="basic-default-phone">Deskripsi</label>
+                          <div class="col-sm-10">
+                              <p>{{$d->deskripsi}}</p>
+                          </div>
+                        </div>
+                      <?php
+                      $cek = $d->status_cek;
+                      $barang = $d->id;
+                      $ga = $d->gambar;
+                      } ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="col-xxl" style="margin-top:30px">
+              <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                  <h5 class="mb-0">Formulir Pengecekan</h5>
+                  <small class="text-muted float-end">Silahkan isi dengan sebaik mungkin</small>
+                </div>
+                <div class="card-body">
+                  <form method="post" action="/verificator/prosesverifikasionsite">
+                    @csrf
+                  <?php if($cek == 0){?>
+                    <input type="hidden" class="form-control" id="basic-default-name" name="pengecekan" value="1" />
+                  <?php }else{ ?>
+                    <input type="hidden" class="form-control" id="basic-default-name" name="pengecekan" value="2" />
+                  <?php } ?>
+                  <input type="hidden" class="form-control" id="basic-default-name" name="barang" value="<?php echo $barang?>" />
+                  <input type="hidden" class="form-control" id="basic-default-name" name="jenis_cek" value="1" />
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Penguji</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="basic-default-name" value="{{ auth()->user()->name }}" />
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-name">Status Pengujian</label>
+                      <div class="col-sm-10">
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="status">
+                        <option selected disabled>Status Pengujian</option>
+                        <option value="2">Diterima untuk Donasi Langsung</option>
+                        <option value="1">Diterima untuk Dijual Dahulu</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-name">Harga Taksiran</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" id="basic-default-name" name="harga"/>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-message">Catatan</label>
+                      <div class="col-sm-10">
+                        <textarea
+                          id="basic-default-message"
+                          class="form-control"
+                          placeholder="Deskripsi"
+                          aria-label="Hi, Do you have a moment to talk Joe?"
+                          aria-describedby="basic-icon-default-message2"
+                          style="resize:none"
+                          name="deskripsi"
+                        >
+                        </textarea>
+                      </div>
+                    </div>
+                    <div class="row justify-content-end">
+                      <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
-            <!-- / Content -->
+
+            </div>
+
+
 
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">

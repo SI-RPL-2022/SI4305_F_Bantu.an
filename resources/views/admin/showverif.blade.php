@@ -124,6 +124,19 @@
                 </li>
               </ul>
             </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-check"></i>
+                <div data-i18n="Layouts">Verifikasi Pengajuan Pembelian Barang</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/verificator/verifikasipembelian" class="menu-link">
+                    <div data-i18n="Without menu">Verifikasi Pembelian</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           <?php } else{?>
             <!-- User interface -->
             <li class="menu-item">
@@ -345,6 +358,7 @@
                       <?php
                       $cek = $d->status_cek;
                       $barang = $d->id;
+                      $ga = $d->gambar;
                       } ?>
                     </div>
                   </div>
@@ -359,6 +373,11 @@
                         <small class="text-muted float-end">Keterangan Barang</small>
                       </div>
                       <div class="card-body">
+                        <div class="row mb-3">
+                          <div class="col-sm-10">
+                            <center><img src="/assets/verifikasi/{{$ga}}" style="width:500px;height:500px;"></center>
+                          </div>
+                        </div>
                         <?php foreach ($gambar as $g) { ?>
                           <div class="row mb-3">
                             <div class="col-sm-10">

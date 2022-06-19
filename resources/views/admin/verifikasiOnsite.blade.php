@@ -124,6 +124,19 @@
                 </li>
               </ul>
             </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-check"></i>
+                <div data-i18n="Layouts">Verifikasi Pengajuan Pembelian Barang</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/verificator/verifikasipembelian" class="menu-link">
+                    <div data-i18n="Without menu">Verifikasi Pembelian</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           <?php } else{?>
             <!-- User interface -->
             <li class="menu-item">
@@ -329,7 +342,7 @@
                         <span class="badge bg-label-warning me-1">Sudah Validasi Online</span></td>
                         <td>
                           <div class="dropdown">
-                            <a href="/verificator/showverif/<?php echo $d->id ?>">
+                            <a href="/verificator/showverifonsite/<?php echo $d->id ?>">
                               Validasi Sekarang
                             </a>
                           </div>
