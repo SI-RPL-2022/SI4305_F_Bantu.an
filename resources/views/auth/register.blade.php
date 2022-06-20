@@ -75,7 +75,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
+                <a href="/" class="app-brand-link gap-2">
                     <img src="/assets/1.png" style="width:200px;height:40px">
                 </a>
               </div>
@@ -140,7 +140,7 @@
                     </label>
                   </div>
                 </div>
-                <button class="btn btn-primary d-grid w-100" style="color:">Register</button>
+                <button class="btn btn-primary d-grid w-100" style="color:white">Register</button>
               </form>
 
               <p class="text-center">
