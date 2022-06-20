@@ -47,12 +47,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/katalog">Katalog</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/pengajuancharity">Pengajuan Charity</a>
+                                </li>
                                       <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                           {{ auth()->user()->name }}
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                          <li><a class="dropdown-item" href="/profil">Profil</a></li>
                                           <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                                           <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
                                           <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>
