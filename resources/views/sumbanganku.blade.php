@@ -28,7 +28,7 @@
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
 <a class='fixed-whatsapp' href='https://api.whatsapp.com/send?phone=628xxxxxxxxxx' rel='nofollow noopener' target='_blank' title='Whatsapp' />
-<nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white" style="margin-bottom:30px">
+<nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="\assets\1.png" class="logo-gambar">
@@ -45,12 +45,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/katalog">Katalog</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pengajuancharity">Pengajuan Charity</a>
+                </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="/profil">Profil</a></li>
                           <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                           <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
                           <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>
@@ -69,7 +71,7 @@
 </nav>
     <section class="container" >
       <div class="row">
-        <h1>SumbanganKu</h1>
+        <h1>Sumbangan</h1>
         <p>Berikut adalah program donasi yang dapat anda lakukan donasi</p>
       <table class="table" style="margin-top:20px">
         <thead>
@@ -86,10 +88,10 @@
           <tr>
             <td><strong>{{ $d->id }}</strong></td>
             <td>{{ $d->nama_donasi }}</td>
-            <td>{{ $d->nama_mitra }}</td>
+            <td>{{ $d->mitra }}</td>
             <td>{{ $d->batas_waktu }}</td>
             <td>
-                <a href="/historyverif/">
+                <a href="/tambahsumbangan/{{ $d->id }}">
                   Tambah Donasi
                 </a>
             </td>
@@ -98,6 +100,7 @@
         </tbody>
       </div>
       </table>
+
     </section><!-- SERVICES -->
 
     <footer>

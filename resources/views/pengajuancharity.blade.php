@@ -347,12 +347,14 @@
                       <li class="nav-item">
                           <a class="nav-link" href="/katalog">Katalog</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/pengajuancharity">Pengajuan Charity</a>
+                      </li>
                             <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ auth()->user()->name }}
                               </a>
                               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/profil">Profil</a></li>
                                 <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                                 <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
                                 <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>
@@ -379,18 +381,19 @@
                     <div class="row align-items-center">
                       <div class="col-8">
                         <h3 class="mb-0">Pengajuan Program Charity</h3>
+                        <p>Anda dapat melihat pengajuan charity anda <a href="/daftarcharity">disini!</a></p>
                       </div>
                     </div>
                   </div>
                   <div class="card-body" style="background-color:white">
-                    <form method="post" action="/postcharity">
+                    <form method="post" action="/postcharity" enctype="multipart/form-data">
                       @csrf
                       <div class="pl-lg-4">
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-username">Nama Donasi</label>
-                              <input type="text" id="input-username" class="form-control" placeholder="Nama Barang" name="nama">
+                              <label class="form-control-label" for="input-username">Nama Program Charity</label>
+                              <input type="text" id="input-username" class="form-control" placeholder="Nama Program" name="namaprogram">
                             </div>
                           </div>
                         </div>
@@ -398,7 +401,7 @@
                           <div class="col-lg-12">
                             <div class="form-group focused">
                               <label class="form-control-label" for="input-first-name">Jenis Barang yang Diterima</label><br>
-                              <select id="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r" class="form-select" name="jenis">
+                              <select id="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r" class="form-select" name="jenisbarang">
                                 <option disabled selected value="" class="form-select-placeholder">Pilih Jenis Barang</option>
                                 <option value="Barang ELektronik">Barang Elektronik</option>
                                 <option value="Pakaian">Pakaian</option>
@@ -410,7 +413,7 @@
                           <div class="row">
                             <div class="col-lg-12">
                               <div class="form-group focused">
-                                <label class="form-control-label" for="input-city">Deskripsi Barang</label>
+                                <label class="form-control-label" for="input-city">Deskripsi Kegiatan</label>
                               <textarea id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" placeholder="" name="deskripsi" placeholder="Deskripsi Barang"></textarea>
                               </div>
                             </div>
@@ -418,33 +421,42 @@
                           <div class="row">
                             <div class="col-lg-12">
                               <div class="form-group focused">
+                                <label class="form-control-label" for="input-username">Batas Waktu</label>
+                                <input type="date" id="input-username" class="form-control" name="bataswaktu">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group focused">
+                                <label class="form-control-label" for="input-username">Nama Penyelenggara</label>
+                                <input type="text" id="input-username" class="form-control" placeholder="Nama Penyelenggara" name="namapenyelenggara">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group focused">
+                                <label class="form-control-label" for="input-first-name">Jenis Penyelenggara</label><br>
+                                <select id="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r" class="form-select" name="jenis">
+                                  <option disabled selected value="" class="form-select-placeholder">Pilih Jenis</option>
+                                  <option value="Yayasan">Yayasan</option>
+                                  <option value="Panti Asuhan">Panti Asuhan</option>
+                                  <option value="Panti Jompo">Panti Jompo</option>
+                                  <option value="Panti Jompo">Lainnya</option>
+                              </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group focused">
                                 <label class="form-control-label" for="input-city">Proposal Pengajuan Charity</label>
-                              <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" type="file" name="gambar" required>
+                              <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" type="file" name="proposal" required>
                             </div>
                           </div>
                           </div>
-                      </div>
-                      <div class="pl-lg-4">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="form-group focused">
-                              <label class="form-control-label" for="input-address">Metode Pengiriman</label>
-                              <select id="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r" class="form-select" name="metode_pengiriman">
-                                <option disabled selected value="" class="form-select-placeholder">Pilih Metode Pengiriman</option>
-                                <option value="Go-Send">Go-Send</option>
-                                <option value="Datang Sendiri">Datang Sendiri</option>
-                            </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <div class="form-group focused">
-                              <label class="form-control-label" for="input-city">Deskripsi Barang</label>
-                            <textarea id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" placeholder="" name="deskripsi" placeholder="Deskripsi Barang"></textarea>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-3">
@@ -504,5 +516,9 @@
                 </div>
             </div>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       </body>
 </html>
