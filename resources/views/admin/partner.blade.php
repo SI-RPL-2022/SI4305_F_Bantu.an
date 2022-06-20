@@ -70,7 +70,7 @@
     if(auth()->user()->type == "1"){
       $a = "Admin";
     }else if(auth()->user()->type == "2"){
-      $a = "Verifikator";
+      $a = "verificator";
     }
     ?>
     <!-- Layout wrapper -->
@@ -124,6 +124,19 @@
                 </li>
               </ul>
             </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-check"></i>
+                <div data-i18n="Layouts">Verifikasi Pengajuan Pembelian Barang</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/verificator/verifikasipembelian" class="menu-link">
+                    <div data-i18n="Without menu">Verifikasi Pembelian</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           <?php } else{?>
             <!-- User interface -->
             <li class="menu-item">
@@ -158,6 +171,32 @@
                 <li class="menu-item">
                   <a href="admin/approvepartner" class="menu-link">
                     <div data-i18n="Accordion">Pengajuan Mitra</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Karyawan</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="User interface">Manajemen Karyawan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/admin/dataemployee" class="menu-link">
+                    <div data-i18n="Accordion">Data Karyawan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="admin/presensiemployee" class="menu-link">
+                    <div data-i18n="Accordion">Absensi Karyawan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="admin/performemployee" class="menu-link">
+                    <div data-i18n="Accordion">Kinerja Karyawan</div>
                   </a>
                 </li>
               </ul>
@@ -225,7 +264,7 @@
                             if(auth()->user()->type == "1"){
                               $a = "Admin";
                             }else if(auth()->user()->type == "2"){
-                              $a = "verificator";
+                              $a = "Verifikator ";
                             }
                             ?>
                             <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
@@ -286,58 +325,44 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">Profilku</h4>
+              <h4 class="fw-bold py-3 mb-4">Verifikasi Online</h4>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card mb-4">
-                    <h5 class="card-header">Profile Details</h5>
-                    <!-- Account -->
-                    <div class="card-body">
-                      <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
-                          src="/assets/img/avatars/{{ auth()->user()->foto_profil }}"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        />
-                        <div class="button-wrapper">
-                          <p>
-                            <b>{{ auth()->user()->name }}</b>
-                          </p>
-                          <p class="text-muted mb-0">{{ ucfirst($a) }}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="my-0" />
-                    <div class="card-body">
-                      <form id="formAccountSettings" method="POST" onsubmit="return false">
-                        <div class="row">
-                          <div class="mb-3 col-md-12">
-                            <label for="firstName" class="form-label">Nama Lengkap</label>
-                            <p>{{ auth()->user()->name }}</p>
-                          </div>
-                          <div class="mb-3 col-md-12">
-                            <label for="email" class="form-label">E-mail</label>
-                            <p>{{ auth()->user()->email }}</p>
-                          </div>
-                          <div class="mb-3 col-md-12">
-                            <label for="email" class="form-label">Tanggal Pembuatan Akun</label>
-                            <p>{{ auth()->user()->created_at }}</p>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <!-- /Account -->
-                  </div>
+              <!-- Basic Bootstrap Table -->
+              <div class="card">
+                <div class="table-responsive text-nowrap">
+                  <table class="table" style="margin-top:20px">
+                    <thead>
+                      <tr>
+                        <th>Donasi</th>
+                        <th>Donatur</th>
+                        <th>Deskripsi</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <?php foreach($data as $d){?>
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$d->nama_donasi}}</strong></td>
+                        <td>{{$d->mitra}}</td>
+                        <td>{{$d->deskripsi}}</td>
+                        <td>
+                          <?php if($d->status == 0){ ?>
+                          <span class="badge bg-label-danger me-1">Belum Divalidasi</span>
+                        <?php }else if($d->status == 1){ ?>
+                          <span class="badge bg-label-success me-1">Diterima</span>
+                        <?php }else{ ?>
+                          <span class="badge bg-label-success me-1">Tidak Diterima</span>
+                        <?php } ?>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
             <!-- / Content -->
 
-            <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
@@ -363,6 +388,7 @@
     </div>
     <!-- / Layout wrapper -->
 
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
@@ -379,7 +405,6 @@
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../assets/js/pages-account-settings-account.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
