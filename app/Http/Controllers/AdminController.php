@@ -22,4 +22,30 @@ class AdminController extends Controller
       $data = User::find($id);
       return view('admin/profile',compact('data'));
     }
+
+    public function partner(){
+      $data = DB::table('kegiatan_donasi')->select("id", "nama_donasi","batas_waktu","mitra","deskripsi","status")->get();
+      return view('admin/partner',compact('data'));
+    }
+
+    public function verifpartner(){
+      $data = DB::table('kegiatan_donasi')->select("id", "nama_donasi","batas_waktu","mitra","deskripsi","status")->where("status",0)->get();
+      return view('admin/verifpartner',compact('data'));
+    }
+
+    public function showverifcharity($id){
+      $data = DB::table('kegiatan_donasi')->select("id", "nama_donasi","batas_waktu","mitra","deskripsi","status","dokumen")->where("id", $id)->get();
+      return view('admin/showverifpartner',compact('data'));
+    }
+
+    public function prosesverifikasipartner(Request $request){
+        $input = $request->all();
+
+        DB::table('kegiatan_donasi')->where('id',$input['id'])->update([
+          'status'=>$input['status']
+        ]);
+
+        return redirect()->route('admin.approvepartner')->with(['success' => 'Berhasil Ditambah']);
+    }
+
 }
