@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2022 pada 10.17
+-- Waktu pembuatan: 21 Jun 2022 pada 06.21
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 8.0.9
 
@@ -50,14 +50,34 @@ INSERT INTO `barang_donasi` (`id`, `nama_barang`, `jenis_barang`, `donatur`, `ta
 (2, 'Uniklo', 'Pakaian', 7, '2022-04-09 19:22:06', 2, 3, 'Datang Sendiri', 'Sangat baik dan mantap jiwa', '1509105914217.jpg', 150000),
 (3, 'Lemari Pakaian', 'Perabotan', 4, '2022-04-09 20:49:01', 2, 2, 'Go-Send', 'Sangat baik dan mantap jiwa', '1509105914217.jpg', 1000000),
 (4, 'Lemari Es', 'Perabotan', 4, '2022-04-09 20:49:01', 2, 1, 'Datang Sendiri', 'Sangat baik dan mantap jiwa', '1509105914217.jpg', 25000),
-(5, 'aaaa', 'Pakaian', 4, '2022-04-10 16:57:22', 0, 3, 'Go-Send', 'aaaaaa', '1635778001499.jpg', 150000),
+(5, 'aaaa', 'Pakaian', 4, '2022-04-10 16:57:22', 1, 2, 'Go-Send', 'aaaaaa', '1635778001499.jpg', 0),
 (6, 'aaaaaaa', 'Pakaian', 4, '2022-04-10 17:03:56', 0, 0, 'Go-Send', 'aaaaaa', 'C:\\xampp\\tmp\\php5A42.tmp', 0),
-(7, 'Kotak Sabun', 'Pakaian', 4, '2022-04-12 16:53:24', 1, 2, 'Go-Send', 'Kotak sabun abad pertengahan', '1649782404.jpg', 0),
+(7, 'Kotak Sabun', 'Pakaian', 4, '2022-04-12 16:53:24', 2, 2, 'Go-Send', 'Kotak sabun abad pertengahan', '1649782404.jpg', 500000),
 (8, 'Lenovo Legion', 'Perabotan', 9, '2022-04-19 05:50:53', 0, 3, 'Go-Send', 'Barang bagus', '1650347453.jpg', 200000),
 (9, 'aaaa', 'Pakaian', 9, '2022-04-19 05:51:52', 0, 1, 'Go-Send', '1111', '1650347512.png', 0),
 (10, 'Laptop', 'Barang ELektronik', 10, '2022-04-19 06:11:17', 0, 1, 'Go-Send', 'Barang Bekas', '1650348677.jpg', 0),
 (11, 'Pakaian', 'Pakaian', 10, '2022-04-19 06:13:03', 0, 0, 'Datang Sendiri', 'Pakaian bekas', '1650348783.png', 0),
 (12, 'Bahan Makanan', 'Barang ELektronik', 4, '2022-05-30 19:01:44', 0, 0, 'Go-Send', 'Bahan makanan untuk elektronik', '1653937304.png', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `charity`
+--
+
+CREATE TABLE `charity` (
+  `id` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `pesan` varchar(100) NOT NULL,
+  `tgl_donasi` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `charity`
+--
+
+INSERT INTO `charity` (`id`, `user`, `pesan`, `tgl_donasi`) VALUES
+(1, 4, 'Tes 123', '2022-06-21 02:24:43');
 
 -- --------------------------------------------------------
 
@@ -137,18 +157,21 @@ INSERT INTO `jenis_barang` (`id_barang`, `jenis_barang`) VALUES
 CREATE TABLE `kegiatan_donasi` (
   `id` int(11) NOT NULL,
   `nama_donasi` varchar(50) NOT NULL,
-  `mitra` int(11) NOT NULL,
+  `mitra` varchar(100) NOT NULL,
   `batas_waktu` date NOT NULL,
-  `deskripsi` varchar(100) NOT NULL
+  `deskripsi` varchar(100) NOT NULL,
+  `dokumen` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kegiatan_donasi`
 --
 
-INSERT INTO `kegiatan_donasi` (`id`, `nama_donasi`, `mitra`, `batas_waktu`, `deskripsi`) VALUES
-(1, 'Donasi untuk Anak Bangsa', 2, '2022-06-02', 'Acara amal untuk membantu bangsa menjadi lebih baik'),
-(2, 'Donasi Bencana Alam', 1, '2022-06-16', 'Donasi untuk bencana alam di seluruh indonesia');
+INSERT INTO `kegiatan_donasi` (`id`, `nama_donasi`, `mitra`, `batas_waktu`, `deskripsi`, `dokumen`, `status`) VALUES
+(1, 'Donasi untuk Anak Bangsa', 'Yayasan Anak Bangsa', '2022-06-02', 'Acara amal untuk membantu bangsa menjadi lebih baik', '', 1),
+(2, 'Donasi Bencana Alam', 'Bisa Bangkit Edusolve', '2022-06-16', 'Donasi untuk bencana alam di seluruh indonesia', '', 1),
+(3, 'Membangun Digital Startup', 'Bisa Bangkit Edusolve', '2022-12-20', 'Membangun Digital Startup Bersama', '1655730949.txt', 2);
 
 -- --------------------------------------------------------
 
@@ -206,7 +229,9 @@ CREATE TABLE `mitra_donasi` (
 
 INSERT INTO `mitra_donasi` (`id`, `nama_mitra`, `jenis_mitra`, `tanggal_bergabung`) VALUES
 (1, 'Yayasan Anak Bangsa', 'Yayasan', '2022-05-30 15:38:12'),
-(2, 'Panti Jompo Sinar Jaya', 'Panti Jompo', '2022-05-30 15:38:12');
+(2, 'Panti Jompo Sinar Jaya', 'Panti Jompo', '2022-05-30 15:38:12'),
+(3, 'Bisa Bangkit Edusolve', 'Yayasan', '2022-06-20 13:15:30'),
+(4, 'Bisa Bangkit Edusolve', 'Yayasan', '2022-06-20 13:15:49');
 
 -- --------------------------------------------------------
 
@@ -244,9 +269,24 @@ INSERT INTO `pengajuan_barang` (`id_pengajuan`, `pengaju`, `barang`, `metode_pen
 (1, 4, 10, 'Go-Send', 'Cek 1...2...3', '2022-05-30 19:47:41', 2),
 (2, 4, 9, 'Go-Send', 'Pengen AJa', '2022-05-31 06:21:14', 2),
 (3, 4, 9, 'Go-Send', 'Pengen AJa', '2022-05-31 06:23:42', 2),
-(4, 4, 9, 'Go-Send', 'Pengen AJa', '2022-05-31 06:24:56', 0),
+(4, 4, 9, 'Go-Send', 'Pengen AJa', '2022-05-31 06:24:56', 2),
 (5, 4, 9, 'Go-Send', 'Mantap Jiwa Mempesondre', '2022-05-31 07:06:46', 0),
-(6, 4, 9, 'Go-Send', 'Karena Kebutuhan', '2022-05-31 07:29:55', 0);
+(6, 4, 9, 'Go-Send', 'Karena Kebutuhan', '2022-05-31 07:29:55', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pengajuan_charity`
+--
+
+CREATE TABLE `pengajuan_charity` (
+  `id_pengajuan_charity` int(11) NOT NULL,
+  `nama_kegiatan` varchar(50) NOT NULL,
+  `deskripsi kegiatan` varchar(150) NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_berakhir` date NOT NULL,
+  `penyelenggara` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -283,7 +323,14 @@ INSERT INTO `pengecekan_barang` (`id`, `barang`, `tanggal_pengecekan`, `status_p
 (13, 10, '2022-05-30 21:08:35', 2, 3, 'Pijar Istimewa'),
 (14, 10, '2022-05-30 21:10:46', 2, 3, 'Pakar Istimewa'),
 (15, 9, '2022-05-31 07:19:09', 2, 3, 'Silahkan'),
-(16, 9, '2022-05-31 07:27:40', 2, 3, 'Diterima');
+(16, 9, '2022-05-31 07:27:40', 2, 3, 'Diterima'),
+(17, 5, '2022-06-20 16:13:32', 1, 1, 'Kang Cpet'),
+(18, 5, '2022-06-20 16:16:09', 1, 1, 'Papapa'),
+(19, 7, '2022-06-20 16:16:32', 2, 1, 'Goks'),
+(20, 7, '2022-06-20 16:16:34', 2, 1, 'Goks'),
+(21, 7, '2022-06-20 16:17:59', 2, 1, 'Goks'),
+(22, 9, '2022-06-20 16:18:38', 2, 3, 'Silahkan dicatat'),
+(23, 9, '2022-06-20 16:18:57', 1, 3, 'Kang Cpet');
 
 -- --------------------------------------------------------
 
@@ -373,7 +420,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ty
 (7, 'AndProjectTest', 'aaa@gmail.com', NULL, '$2y$10$fxhSdUoi9EMpn/lD1shf6.j.ZuJI2VXWiQHFMYSqheOaER.I8GNaq', 0, 'avatar.png', NULL, '2022-04-02 01:37:05', '2022-04-02 01:37:05'),
 (8, 'Ahmad Subagja', 'ahmad@fleker.us', NULL, '$2y$10$NZImMEBxR7i6H.cTGo5YMuyuP7iqXIOdbinG3jYwjleJxQ61nvBom', 0, 'foto.jpg', NULL, '2022-04-18 20:34:41', '2022-04-18 20:34:41'),
 (9, 'Ahmad Subagja Baasit', 'basit@gmail.com', NULL, '$2y$10$2Uyq177tXo.u/9SEGSFbDeXZDVT9SRzAHvBszweAAQ961/S3LIz1e', 0, 'foto.jpg', NULL, '2022-04-18 22:49:35', '2022-04-18 22:49:35'),
-(10, 'Sinung', 'sinung@gmail.com', NULL, '$2y$10$n8cX4.aLRjoYDqJ56vhGKOjFSKiFRoXo2m5Y0SZmLuuEPDTw1jD4u', 0, 'foto.jpg', NULL, '2022-04-18 23:08:42', '2022-04-18 23:08:42');
+(10, 'Sinung', 'sinung@gmail.com', NULL, '$2y$10$n8cX4.aLRjoYDqJ56vhGKOjFSKiFRoXo2m5Y0SZmLuuEPDTw1jD4u', 0, 'foto.jpg', NULL, '2022-04-18 23:08:42', '2022-04-18 23:08:42'),
+(11, 'Andrian Firmansyah', 'aaa@jfak.cla', NULL, '$2y$10$tw0.iMVVWJQjgZpVAZV.7usgxsdBBQHGXpJJU1JcmZRgHY0svqxLe', 0, 'foto.jpg', NULL, '2022-06-19 01:22:41', '2022-06-19 01:22:41');
 
 --
 -- Indexes for dumped tables
@@ -383,6 +431,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ty
 -- Indeks untuk tabel `barang_donasi`
 --
 ALTER TABLE `barang_donasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `charity`
+--
+ALTER TABLE `charity`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -441,6 +495,12 @@ ALTER TABLE `pengajuan_barang`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
+-- Indeks untuk tabel `pengajuan_charity`
+--
+ALTER TABLE `pengajuan_charity`
+  ADD PRIMARY KEY (`id_pengajuan_charity`);
+
+--
 -- Indeks untuk tabel `pengecekan_barang`
 --
 ALTER TABLE `pengecekan_barang`
@@ -484,6 +544,12 @@ ALTER TABLE `barang_donasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT untuk tabel `charity`
+--
+ALTER TABLE `charity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `donasi`
 --
 ALTER TABLE `donasi`
@@ -511,7 +577,7 @@ ALTER TABLE `jenis_barang`
 -- AUTO_INCREMENT untuk tabel `kegiatan_donasi`
 --
 ALTER TABLE `kegiatan_donasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -523,7 +589,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `mitra_donasi`
 --
 ALTER TABLE `mitra_donasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengajuan_barang`
@@ -532,10 +598,16 @@ ALTER TABLE `pengajuan_barang`
   MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT untuk tabel `pengajuan_charity`
+--
+ALTER TABLE `pengajuan_charity`
+  MODIFY `id_pengajuan_charity` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `pengecekan_barang`
 --
 ALTER TABLE `pengecekan_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -559,7 +631,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
