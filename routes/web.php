@@ -47,6 +47,11 @@ Route::middleware(['auth', 'user-access:0'])->group(function () {
     Route::get('/tambahpengajuan/{id}', [HomeController::class, 'tambahpengajuan'])->name('tambahpengajuan');
     Route::post('/postpengajuan', [HomeController::class, 'postpengajuan'])->name('postpengajuan');
     Route::get('/sumbangan', [HomeController::class, 'sumbangan'])->name('sumbangan');
+    Route::get('/daftarcharity', [HomeController::class, 'daftarcharity'])->name('daftarcharity');
+    Route::get('/tambahsumbangan/{id}', [HomeController::class, 'tambahsumbangan'])->name('tambahsumbangan');
+    Route::get('/pengajuancharity', [HomeController::class, 'pengajuancharity'])->name('pengajuancharity');
+    Route::post('/postcharity', [HomeController::class, 'postcharity'])->name('postcharity');
+    Route::post('/postdatacharity', [HomeController::class, 'postdatacharity'])->name('postdatacharity');
 });
 
 /*------------------------------------------
@@ -55,8 +60,12 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->group(function () {
-    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/Admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/partner', [AdminController::class, 'partner'])->name('admin.partner');
+    Route::get('/admin/approvepartner', [AdminController::class, 'verifpartner'])->name('admin.approvepartner');
+    Route::get('/admin/showverifcharity/{id}', [AdminController::class, 'showverifcharity'])->name('admin.showverifcharity');
+    Route::post('/admin/prosesverifikasipartner', [AdminController::class, 'prosesverifikasipartner'])->name('admin.prosesverifikasipartner');
 });
 
 /*------------------------------------------
@@ -72,7 +81,7 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/verificator/showverif/{id}', [VerificatorController::class, 'showverif'])->name('verificator.showverif');
     Route::get('/verificator/showverifonsite/{id}', [VerificatorController::class, 'showverifonsite'])->name('verificator.showverifonsite');
     Route::post('/verificator/verifikasi', [VerificatorController::class, 'verifikasi'])->name('verificator.verifikasi');
-    Route::post('/verificator/prosesverifikasionsite', [VerificatorController::class, 'verifikasi'])->name('verificator.prosesverifikasionsite');
+    Route::post('/verificator/prosesverifikasionsite', [VerificatorController::class, 'prosesverifikasionsite'])->name('verificator.prosesverifikasionsite');
     Route::post('/verificator/prosesverifikasipembelian', [VerificatorController::class, 'prosesverifikasipembelian'])->name('verificator.prosesverifikasipembelian');
     Route::get('/verificator/verifikasipembelian', [VerificatorController::class, 'verifikasipembelian'])->name('verificator.verifikasipembelian');
     Route::get('/verificator/showverifpembelian/{id}', [VerificatorController::class, 'showverifpembelian'])->name('verificator.showverifpembelian');
