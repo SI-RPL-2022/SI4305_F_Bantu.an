@@ -385,7 +385,7 @@
                     </div>
                   </div>
                   <div class="card-body" style="background-color:white">
-                    <form method="post" action="/postpengajuan">
+                    <form method="post" action="/postdatacharity">
                       @csrf
                       <h6 class="heading-small text-muted mb-4">Silahkan isi data sumbangan dengan sebaik mungkin</h6>
                       <div class="pl-lg-4">
@@ -415,15 +415,14 @@
                           <div class="col-lg-12">
                             <div class="form-group focused">
                               <label class="form-control-label" for="input-city">Pesan-Pesan</label>
-                            <textarea id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" placeholder="" name="deskripsi" placeholder="Deskripsi Barang"></textarea>
+                            <textarea id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="form-control" placeholder="" name="pesan" placeholder="Deskripsi Barang"></textarea>
                             </div>
                           </div>
                         </div>
                         <div class="row">
-
                           <div class="col-lg-3">
                             <div class="form-group focused">
-                            <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="btn btn-primary" type="submit" value="Tambah Pengajuan">
+                            <input id="field-3naeph-0f3yuw-x153ph-dzmahy-qhkmgm" class="btn btn-primary" type="submit" value="Tambah Donasi">
                           </div>
                         <?php }else{ ?>
                             <div class="form-group focused">

@@ -18,7 +18,7 @@
 <a class='fixed-whatsapp' href='https://api.whatsapp.com/send?phone=628xxxxxxxxxx' rel='nofollow noopener' target='_blank' title='Whatsapp' />
 <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white" style="margin-bottom:30px">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/home">
             <img src="\assets\1.png" class="logo-gambar">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,17 +28,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/katalog">Katalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pengajuancharity">Pengajuan Charity</a>
                 </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="/profil">Profil</a></li>
                           <li><a class="dropdown-item" href="/donasiku">DonasiKu</a></li>
                           <li><a class="dropdown-item" href="/pengajuanku">PengajuanKu</a></li>
                           <li><a class="dropdown-item" href="/sumbangan">Sumbangan</a></li>

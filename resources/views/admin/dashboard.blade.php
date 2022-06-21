@@ -77,7 +77,6 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="/{{$a}}/home" class="app-brand-link">
@@ -93,7 +92,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="/{{$a}}/home" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -169,7 +168,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="admin/approvepartner" class="menu-link">
+                  <a href="/admin/approvepartner" class="menu-link">
                     <div data-i18n="Accordion">Pengajuan Mitra</div>
                   </a>
                 </li>
@@ -198,7 +197,6 @@
             </li>
           </ul>
         </aside>
-        <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">

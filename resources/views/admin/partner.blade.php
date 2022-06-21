@@ -169,34 +169,8 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="admin/approvepartner" class="menu-link">
+                  <a href="/admin/approvepartner" class="menu-link">
                     <div data-i18n="Accordion">Pengajuan Mitra</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Karyawan</span>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="User interface">Manajemen Karyawan</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/admin/dataemployee" class="menu-link">
-                    <div data-i18n="Accordion">Data Karyawan</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="admin/presensiemployee" class="menu-link">
-                    <div data-i18n="Accordion">Absensi Karyawan</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="admin/performemployee" class="menu-link">
-                    <div data-i18n="Accordion">Kinerja Karyawan</div>
                   </a>
                 </li>
               </ul>
@@ -348,10 +322,10 @@
                         <td>
                           <?php if($d->status == 0){ ?>
                           <span class="badge bg-label-danger me-1">Belum Divalidasi</span>
-                        <?php }else if($d->status == 1){ ?>
+                        <?php }else if($d->status == 2){ ?>
                           <span class="badge bg-label-success me-1">Diterima</span>
                         <?php }else{ ?>
-                          <span class="badge bg-label-success me-1">Tidak Diterima</span>
+                          <span class="badge bg-label-danger me-1">Tidak Diterima</span>
                         <?php } ?>
                         </td>
                       </tr>

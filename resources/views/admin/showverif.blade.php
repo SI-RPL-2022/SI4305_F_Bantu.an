@@ -151,7 +151,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="admin/listbarang" class="menu-link">
+                  <a href="/admin/listbarang" class="menu-link">
                     <div data-i18n="Accordion">Jenis Barang Donasi</div>
                   </a>
                 </li>
@@ -169,34 +169,8 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="admin/approvepartner" class="menu-link">
+                  <a href="/admin/approvepartner" class="menu-link">
                     <div data-i18n="Accordion">Pengajuan Mitra</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Karyawan</span>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="User interface">Manajemen Karyawan</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/admin/dataemployee" class="menu-link">
-                    <div data-i18n="Accordion">Data Karyawan</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="admin/presensiemployee" class="menu-link">
-                    <div data-i18n="Accordion">Absensi Karyawan</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="admin/performemployee" class="menu-link">
-                    <div data-i18n="Accordion">Kinerja Karyawan</div>
                   </a>
                 </li>
               </ul>
@@ -398,7 +372,7 @@
                 </div>
                 <div class="card-body">
                   <form method="post" action="/verificator/verifikasi">
-                    @csrf
+                  @csrf
                   <?php if($cek == 0){?>
                     <input type="hidden" class="form-control" id="basic-default-name" name="pengecekan" value="1" />
                   <?php }else{ ?>
