@@ -152,7 +152,7 @@ class HomeController extends Controller
   $input = $request->all();
 
   $namafile = time().'.'.$request->proposal->extension();
-  $request->gambar->move(public_path('/assets/dokumen'), $namafile);
+  $request->proposal->move(public_path('/assets/dokumen'), $namafile);
 
   DB::table('mitra_donasi')->insert([
     'nama_mitra'=>$input['namapenyelenggara'],
@@ -161,7 +161,7 @@ class HomeController extends Controller
 
   DB::table('kegiatan_donasi')->insert([
     'nama_donasi'=>$input['namaprogram'],
-    'mitra'=>$input['nama_penyelenggara'],
+    'mitra'=>$input['namapenyelenggara'],
     'batas_waktu'=>$input['bataswaktu'],
     'deskripsi'=>$input['deskripsi'],
     'dokumen'=>$namafile,
