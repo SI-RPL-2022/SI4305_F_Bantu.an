@@ -1,0 +1,2 @@
+Unpack to the folder, where folder and path don't have breaks (like D:\Downloads\Office)
+Run (just double-click) the appropriate cmd file to install the required package
