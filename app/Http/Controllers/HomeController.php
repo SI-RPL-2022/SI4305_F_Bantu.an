@@ -69,6 +69,10 @@ class HomeController extends Controller
         return view('adddonation');
     }
 
+    public function pengajuancharity(){
+        return view('pengajuancharity');
+    }
+
     public function postdonation(Request $request){
     $input = $request->all();
 
@@ -113,9 +117,21 @@ class HomeController extends Controller
       return view('tambahpembelian',compact('data'));
     }
 
+
     public function sumbangan(){
-      $data = DB::table('kegiatan_donasi')->join("mitra_donasi","kegiatan_donasi.mitra","=","mitra_donasi.id")->select("mitra_donasi.nama_mitra", "kegiatan_donasi.id", "mitra_donasi.jenis_mitra", "kegiatan_donasi.nama_donasi","kegiatan_donasi.batas_waktu","kegiatan_donasi.deskripsi")->get();
+      $data = DB::table('kegiatan_donasi')->select("id", "nama_donasi","batas_waktu","mitra","deskripsi")->where('status',2)->get();
       return view('sumbanganku',compact('data'));
+    }
+
+    public function daftarcharity(){
+      $data = DB::table('kegiatan_donasi')->select("id", "nama_donasi","batas_waktu","mitra","deskripsi","status")->get();
+      return view('daftarcharity',compact('data'));
+    }
+
+    public function tambahsumbangan($id){
+      $data = DB::table('kegiatan_donasi')->join("mitra_donasi","kegiatan_donasi.mitra","=","mitra_donasi.id")->select("mitra_donasi.nama_mitra", "kegiatan_donasi.id", "mitra_donasi.jenis_mitra", "kegiatan_donasi.nama_donasi","kegiatan_donasi.batas_waktu","kegiatan_donasi.deskripsi")->where('kegiatan_donasi.id',$id)->get();
+      $dati = DB::select("SELECT count(id) as jumlah_donasi from barang_donasi where status_cek > 0 and donatur =".auth()->user()->id);
+      return view('tambahsumbangan',compact('data','dati'));
     }
 
     public function postpengajuan(Request $request){
@@ -130,5 +146,38 @@ class HomeController extends Controller
     ]);
 
     return redirect()->route('katalog')->with(['success' => 'Berhasil Ditambah']);
+  }
+
+  public function postcharity(Request $request){
+  $input = $request->all();
+
+  $namafile = time().'.'.$request->proposal->extension();
+  $request->gambar->move(public_path('/assets/dokumen'), $namafile);
+
+  DB::table('mitra_donasi')->insert([
+    'nama_mitra'=>$input['namapenyelenggara'],
+    'jenis_mitra'=>$input['jenis'],
+  ]);
+
+  DB::table('kegiatan_donasi')->insert([
+    'nama_donasi'=>$input['namaprogram'],
+    'mitra'=>$input['nama_penyelenggara'],
+    'batas_waktu'=>$input['bataswaktu'],
+    'deskripsi'=>$input['deskripsi'],
+    'dokumen'=>$namafile,
+  ]);
+
+  return redirect()->route('pengajuancharity')->with(['success' => 'Berhasil Ditambah']);
+  }
+
+  public function postdatacharity(Request $request){
+  $input = $request->all();
+
+  DB::table('charity')->insert([
+    'user'=> auth()->user()->id,
+    'pesan'=>$input['pesan'],
+  ]);
+
+  return redirect()->route('daftarcharity')->with(['success' => 'Berhasil Ditambah']);
   }
 }

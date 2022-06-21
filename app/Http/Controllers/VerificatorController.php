@@ -70,7 +70,7 @@ class VerificatorController extends Controller
       DB::table('barang_donasi')->where('id',$input['barang'])->update([
         'status_cek'=>$input['pengecekan'],
         'ketersediaan'=>$input['status'],
-        'harga'=>$input['harga']
+        'harga'=>0
       ]);
 
       return redirect()->route('verificator.verifyonline')->with(['success' => 'Berhasil Ditambah']);
@@ -89,7 +89,7 @@ class VerificatorController extends Controller
 
       DB::table('barang_donasi')->where('id',$input['barang'])->update([
         'status_cek'=>$input['pengecekan'],
-        'ketersediaan'=>$input['status'],
+        'ketersediaan'=> 2,
         'harga'=>$input['harga']
       ]);
 
